@@ -25,3 +25,19 @@ length(d)
 d[1:3]
 b[length(d):1]
 
+DNAseq = DNAString("GTACCTGACAAGCTACATCGCATGCAATTAG")
+length(DNAseq)
+subseq(DNAseq, 3, 6)
+
+#Extract consecutive codons
+codons_set1 <- codons(DNAseq)
+codons_set2 <- codons(DNAseq[2:length(DNAseq)])
+codons_set3 <- codons(DNAseq[3:length(DNAseq)])
+print(codons_set1)
+print(codons_set2)
+print(codons_set3)
+codons_set
+
+#Overlapping 3-mer frequencies(step-1)
+all_counts <- trinucleotideFrequency(DNAseq, step = 1)
+all_counts
