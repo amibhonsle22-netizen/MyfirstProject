@@ -41,3 +41,20 @@ codons_set
 #Overlapping 3-mer frequencies(step-1)
 all_counts <- trinucleotideFrequency(DNAseq, step = 1)
 all_counts
+
+#FastQ and Fasta
+BiocManager::install("ShortRead")
+library(Biostrings)
+library(ShortRead)
+
+getwd()
+setwd()
+
+#Create a DNAstrings manually
+my_seqs <- DNAStringSet(c("ATGCATCGTCTC", "CTACTGATCGGTTCA"))
+names(my_seqs) <- c("Seq1_geneA", "Seq2_geneB")
+#
+#Read FASTA files
+DNAseq <- readDNAStringSet("C:/Users/Ami Mukesh Bhonsle/Downloads/sequence.fasta")
+DNAseq
+names(DNAseq)
