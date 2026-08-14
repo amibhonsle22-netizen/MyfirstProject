@@ -51,10 +51,26 @@ getwd()
 setwd()
 
 #Create a DNAstrings manually
-my_seqs <- DNAStringSet(c("ATGCATCGTCTC", "CTACTGATCGGTTCA"))
+my_seqs <- DNAStringSet(c("ATGCATCGTCTC", "CTACTGATCGGTCG"))
 names(my_seqs) <- c("Seq1_geneA", "Seq2_geneB")
-#
+
+#Export
+writeXStringSet(my_seqs, filepath = "sequence.fasta")
+DNAseq <- readDNAStringSet("sequence.fasta")
+
 #Read FASTA files
 DNAseq <- readDNAStringSet("C:/Users/Ami Mukesh Bhonsle/Downloads/sequence.fasta")
 DNAseq
 names(DNAseq)
+
+#Acess sequence lengths and individual elements
+width(DNAseq)
+first_seq <- DNAseq[[1]]
+
+#Construct a Shortread () Object
+my_reads <- ShortReadQ(
+  sread = DNAStringSet(c("ATCG", "ACTG")),
+  quality = BStringSet(c("IIII", "I#II")),
+  id = BStringSet(c("Read1", "Read2"))
+)
+
