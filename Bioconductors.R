@@ -74,3 +74,26 @@ my_reads <- ShortReadQ(
   id = BStringSet(c("Read1", "Read2"))
 )
 
+#Global and Pairwise alignment
+BiocManager::install("pwalign")
+library(Biostrings)
+library(pwalign)
+#Define target sequence vectors
+pattern_seq <- DNAString("ATCGGCATCTAG")
+subject_seq <- DNAString("ACTGCATGCATG")
+#Execute Global Alignment (Needleman-Wunsch)
+global_aln <- pairwiseAlignment(
+  pattern = pattern_seq,
+  subject = subject_seq,
+  type = "global"
+)
+print(global_aln)
+#Execute Local Alignment (Smith-Waterman)
+local_aln <- pairwiseAlignment(
+  pattern = pattern_seq,
+  subject = subject_seq,
+  type = "local"
+)
+print(local_aln)
+
+
